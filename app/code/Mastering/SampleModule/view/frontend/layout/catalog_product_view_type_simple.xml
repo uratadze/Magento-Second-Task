@@ -7,8 +7,6 @@
 -->
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
-        <referenceBlock class="Mastering\SampleModule\Block\Product" name="klarna.osm.product" template="Mastering_SampleModule::ProductView.phtml">
-
-        </referenceBlock>
+        <referenceBlock class="Magento\Catalog\Block\Product\View\Type\Simple" name="product.info.simple" template="Mastering_SampleModule::ProductView.phtml" />
     </body>
 </page>

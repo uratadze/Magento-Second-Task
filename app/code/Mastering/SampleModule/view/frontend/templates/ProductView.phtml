@@ -1,30 +1,25 @@
 <?php
 /**
- * This file is part of the Klarna Onsitemessaging module
- *
- * (c) Klarna Bank AB (publ)
- *
- * For the full copyright and license information, please view the NOTICE
- * and LICENSE files that were distributed with this source code.
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
  */
+?>
+<?php /* @var $block \Magento\Catalog\Block\Product\View\AbstractView */?>
+<?php $_product = $block->getProduct() ?>
 
-/** @var Klarna\Onsitemessaging\Block\Product $block */
-/** @var Magento\Framework\Escaper $escaper */
+<?php if ($block->displayProductStockStatus()) :?>
+    <?php if ($_product->isAvailable()) :?>
+        <div class="stock available" title="<?= $block->escapeHtmlAttr(__('Availability')) ?>">
+            <span><?= $block->escapeHtml(__('In stock')) ?></span>
+        </div>
+    <?php else :?>
+        <div class="stock unavailable" title="<?= $block->escapeHtmlAttr(__('Availability')) ?>">
+            <span><?= $block->escapeHtml(__('Out of stock')) ?></span>
+        </div>
+    <?php endif; ?>
+<?php endif; ?>
 
-if ($block->showOnProduct()):
-    ?>
-    <!-- Placement v2 -->
-    <klarna-placement
-        data-key="<?= $escaper->escapeHtml($block->getPlacementId()) ?>"
-        data-locale="<?= $escaper->escapeHtml($block->getLocale()) ?>"
-        <?php if ($block->getPurchaseAmount()): ?>
-            data-purchase-amount="<?= $escaper->escapeHtml($block->getPurchaseAmount()) ?>"
-        <?php endif ?>
-        data-theme="<?= $escaper->escapeHtml($block->getTheme()) ?>"
-    ></klarna-placement>
-    <!-- end Placement -->
-<?php endif ?>
-<?php if($block->getSampleData()): ?>
-(Name + SKUNK :D ):
-<?php echo $block->getSampleData(); ?>
+<?php if($_product->getSampleAttribute()): ?>
+    (Name + SKUNK :D) :
+    <?php echo $_product->getSampleAttribute(); ?>
 <?php endif ?>

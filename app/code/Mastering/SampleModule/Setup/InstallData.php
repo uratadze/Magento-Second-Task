@@ -24,7 +24,7 @@ class InstallData implements InstallDataInterface
             \Magento\Catalog\Model\Product::ENTITY,
             'sample_attribute',
             [
-                'type' => 'text',
+                'type' => 'varchar',
                 'backend' => '',
                 'frontend' => '',
                 'label' => 'Sample Atrribute',
